@@ -3,22 +3,33 @@ import java.util.Objects;
 import java.util.List;
 
 public class Student{
-    private String Name, vorName;
+    private String name, vorName;
     private int nrMatricol, nrCredite;
     private List<Cursuri> cursuri;
 
+    public Student(String name, String vorName, int nrMatricol, int nrCredite, List<Cursuri> cursuri) {
+        this.name = name;
+        this.vorName = vorName;
+        this.nrMatricol = nrMatricol;
+        this.nrCredite = nrCredite;
+        this.cursuri = cursuri;
+    }
 
-
-
-
-
+    public void addCurs(Cursuri c){
+        cursuri.add(c);
+        nrCredite+=c.getNrCredite();
+    }
+    public void delCurs(Cursuri c){
+        cursuri.remove(c);
+        nrCredite-=c.getNrCredite();
+    }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getVorname() {
@@ -58,18 +69,18 @@ public class Student{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return nrMatricol == student.nrMatricol && nrCredite == student.nrCredite && Objects.equals(Name, student.Name) && Objects.equals(vorName, student.vorName) && Objects.equals(cursuri, student.cursuri);
+        return nrMatricol == student.nrMatricol && nrCredite == student.nrCredite && Objects.equals(name, student.name) && Objects.equals(vorName, student.vorName) && Objects.equals(cursuri, student.cursuri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Name, vorName, nrMatricol, nrCredite, cursuri);
+        return Objects.hash(name, vorName, nrMatricol, nrCredite, cursuri);
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "Name='" + Name + '\'' +
+                "Name='" + name + '\'' +
                 ", vorname='" + vorName + '\'' +
                 ", nrMatricol=" + nrMatricol +
                 ", nrCredite=" + nrCredite +

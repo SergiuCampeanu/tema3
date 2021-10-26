@@ -1,13 +1,26 @@
 package com.company;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Profesor {
     private String name, vorName;
+    private List<Cursuri> cursuri;
 
-    public String getName() {
-        return name;
+    public Profesor(String name, String vorName, List<Cursuri> cursuri) {
+        this.name = name;
+        this.vorName = vorName;
+        this.cursuri = cursuri;
     }
+
+    public void addCurs(Cursuri c){
+        cursuri.add(c);
+    }
+    public void delCurs(Cursuri c){
+        cursuri.remove(c);
+    }
+
+    public String getName() {return name;}
 
     public void setName(String name) {
         this.name = name;
@@ -21,17 +34,21 @@ public class Profesor {
         this.vorName = vorName;
     }
 
+    public List<Cursuri> getCursuri() {return cursuri;}
+
+    public void setCursuri(List<Cursuri> cursuri) {this.cursuri = cursuri;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Profesor profesor = (Profesor) o;
-        return Objects.equals(name, profesor.name) && Objects.equals(vorName, profesor.vorName);
+        return Objects.equals(name, profesor.name) && Objects.equals(vorName, profesor.vorName) && Objects.equals(cursuri, profesor.cursuri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, vorName);
+        return Objects.hash(name, vorName, cursuri);
     }
 
     @Override
@@ -39,6 +56,7 @@ public class Profesor {
         return "Profesor{" +
                 "name='" + name + '\'' +
                 ", vorName='" + vorName + '\'' +
+                ", cursuri=" + cursuri +
                 '}';
     }
 }
