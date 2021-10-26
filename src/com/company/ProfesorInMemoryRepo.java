@@ -33,7 +33,7 @@ public class ProfesorInMemoryRepo implements CrudRepository<Profesor>{
     }
 
     @Override
-    public Profesor delete(Long id) {
+    public Profesor delete(Profesor entity) {
 
         return null;
     }

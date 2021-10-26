@@ -33,7 +33,7 @@ public class CursuriInMemoryRepo implements CrudRepository<Cursuri>{
     }
 
     @Override
-    public Cursuri delete(Long id) {
+    public Cursuri delete(Cursuri entity) {
 
         return null;
     }

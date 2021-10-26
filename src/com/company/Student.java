@@ -7,6 +7,12 @@ public class Student{
     private int nrMatricol, nrCredite;
     private List<Cursuri> cursuri;
 
+
+
+
+
+
+
     public String getName() {
         return Name;
     }
