@@ -7,23 +7,31 @@ public class Cursuri {
 
     private String name;
     private Profesor profesor;
+    private int idCurs;
     private int nrCredite;
     private int nrStudenti;
     private int nrMaxStudenti;
     private List<Student> studenti;
 
-    public Cursuri(String name, Profesor profesor, int nrCredite, int nrStudenti, int nrMaxStudenti, List<Student> studenti) {
+    public Cursuri(String name, Profesor profesor, int idCurs, int nrCredite, int nrStudenti, int nrMaxStudenti, List<Student> studenti) {
         this.name = name;
         this.profesor = profesor;
+        this.idCurs = idCurs;
         this.nrCredite = nrCredite;
         this.nrStudenti = nrStudenti;
         this.nrMaxStudenti = nrMaxStudenti;
         this.studenti = studenti;
     }
 
-    public void addStudent(Student s){
-        studenti.add(s);
-        nrStudenti+=1;
+    public void addStudent(Student s) throws Exception {
+        if(nrStudenti==nrMaxStudenti)
+        {
+            throw new Exception("nu mai sunt locuri disponibile in acest curs");
+        }
+        else {
+            studenti.add(s);
+            nrStudenti += 1;
+        }
     }
     public void delStudent(Student s){
         studenti.remove(s);
@@ -46,11 +54,19 @@ public class Cursuri {
         this.profesor = profesor;
     }
 
+    public int getIdCurs() {
+        return idCurs;
+    }
+
+    public void setIdCurs(int idCurs) {
+        this.idCurs = idCurs;
+    }
+
     public int getNrCredite() {
         return nrCredite;
     }
 
-    public void setNrCrdite(int nrCredite) {
+    public void setNrCredite(int nrCredite) {
         this.nrCredite = nrCredite;
     }
 
@@ -83,12 +99,12 @@ public class Cursuri {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cursuri cursuri = (Cursuri) o;
-        return nrCredite == cursuri.nrCredite && nrStudenti == cursuri.nrStudenti && nrMaxStudenti == cursuri.nrMaxStudenti && Objects.equals(name, cursuri.name) && Objects.equals(profesor, cursuri.profesor) && Objects.equals(studenti, cursuri.studenti);
+        return idCurs == cursuri.idCurs && nrCredite == cursuri.nrCredite && nrStudenti == cursuri.nrStudenti && nrMaxStudenti == cursuri.nrMaxStudenti && Objects.equals(name, cursuri.name) && Objects.equals(profesor, cursuri.profesor) && Objects.equals(studenti, cursuri.studenti);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, profesor, nrCredite, nrStudenti, nrMaxStudenti, studenti);
+        return Objects.hash(name, profesor, idCurs, nrCredite, nrStudenti, nrMaxStudenti, studenti);
     }
 
     @Override
@@ -96,6 +112,7 @@ public class Cursuri {
         return "Cursuri{" +
                 "name='" + name + '\'' +
                 ", profesor=" + profesor +
+                ", idCurs=" + idCurs +
                 ", nrCredite=" + nrCredite +
                 ", nrStudenti=" + nrStudenti +
                 ", nrMaxStudenti=" + nrMaxStudenti +

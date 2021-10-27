@@ -15,13 +15,27 @@ public class Student{
         this.cursuri = cursuri;
     }
 
-    public void addCurs(Cursuri c){
-        cursuri.add(c);
-        nrCredite+=c.getNrCredite();
+    public void addCurs(Cursuri c) throws Exception {
+        if(nrCredite+c.getNrCredite()>30)
+        {
+            throw new Exception("Prea multe credite");
+        }
+        if(c.getNrStudenti()+1 > c.getNrMaxStudenti())
+        {
+            throw new Exception("Nu mai sunt locuri disponibile la acest curs");
+        }
+        else
+        {
+            cursuri.add(c);
+            nrCredite += c.getNrCredite();
+            c.setNrStudenti(c.getNrStudenti() + 1);
+            //c.setStudenti(c.getStudenti(Student));
+        }
     }
     public void delCurs(Cursuri c){
         cursuri.remove(c);
         nrCredite-=c.getNrCredite();
+        c.setNrStudenti(c.getNrStudenti() - 1);
     }
 
     public String getName() {

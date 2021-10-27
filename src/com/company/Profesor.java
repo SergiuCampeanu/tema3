@@ -5,11 +5,13 @@ import java.util.Objects;
 
 public class Profesor {
     private String name, vorName;
+    private int nrProf;
     private List<Cursuri> cursuri;
 
-    public Profesor(String name, String vorName, List<Cursuri> cursuri) {
+    public Profesor(String name, String vorName, int nrProf, List<Cursuri> cursuri) {
         this.name = name;
         this.vorName = vorName;
+        this.nrProf = nrProf;
         this.cursuri = cursuri;
     }
 
@@ -34,6 +36,14 @@ public class Profesor {
         this.vorName = vorName;
     }
 
+    public int getNrProf() {
+        return nrProf;
+    }
+
+    public void setNrProf(int nrProf) {
+        this.nrProf = nrProf;
+    }
+
     public List<Cursuri> getCursuri() {return cursuri;}
 
     public void setCursuri(List<Cursuri> cursuri) {this.cursuri = cursuri;}
@@ -43,12 +53,12 @@ public class Profesor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Profesor profesor = (Profesor) o;
-        return Objects.equals(name, profesor.name) && Objects.equals(vorName, profesor.vorName) && Objects.equals(cursuri, profesor.cursuri);
+        return nrProf == profesor.nrProf && Objects.equals(name, profesor.name) && Objects.equals(vorName, profesor.vorName) && Objects.equals(cursuri, profesor.cursuri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, vorName, cursuri);
+        return Objects.hash(name, vorName, nrProf, cursuri);
     }
 
     @Override
@@ -56,6 +66,7 @@ public class Profesor {
         return "Profesor{" +
                 "name='" + name + '\'' +
                 ", vorName='" + vorName + '\'' +
+                ", nrProf=" + nrProf +
                 ", cursuri=" + cursuri +
                 '}';
     }
