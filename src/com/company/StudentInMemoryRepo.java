@@ -20,7 +20,7 @@ public class StudentInMemoryRepo implements CrudRepository<Student>{
         else
         {
             for (Student s : student) {
-                if (id == s.getNrMatricol()) {
+                if (id == s.getStudentId()) {
                     return s;
                 }
             }

@@ -1,104 +1,61 @@
 package com.company;
-import java.util.Objects;
 import java.util.List;
 
-public class Student{
-    private String name, vorName;
-    private int nrMatricol, nrCredite;
-    private List<Cursuri> cursuri;
+public class Student extends Person {
 
-    public Student(String name, String vorName, int nrMatricol, int nrCredite, List<Cursuri> cursuri) {
-        this.name = name;
-        this.vorName = vorName;
-        this.nrMatricol = nrMatricol;
-        this.nrCredite = nrCredite;
-        this.cursuri = cursuri;
+    public long studentId;
+    public int totalCredit;
+    public List<Course> enrolledCourses;
+
+    public Student(String name, String firstName, long studentId, int totalCredit, List<Course> enrolledCourses) {
+        super(name, firstName);
+        this.studentId = studentId;
+        this.totalCredit = totalCredit;
+        this.enrolledCourses = enrolledCourses;
     }
 
-    public void addCurs(Cursuri c) throws Exception {
-        if(nrCredite+c.getNrCredite()>30)
+    public void addCurs(Course c) throws Exception {
+        if(totalCredit+c.getCredits()>30)
         {
             throw new Exception("Prea multe credite");
         }
-        if(c.getNrStudenti()+1 > c.getNrMaxStudenti())
+        if(c.getStudentsEnrolled().size()+1 > c.getMaxEnrolled())
         {
             throw new Exception("Nu mai sunt locuri disponibile la acest curs");
         }
         else
         {
-            cursuri.add(c);
-            nrCredite += c.getNrCredite();
-            c.setNrStudenti(c.getNrStudenti() + 1);
-            //c.setStudenti(c.getStudenti(Student));
+            enrolledCourses.add(c);
+            totalCredit += c.getCredits();
         }
     }
-    public void delCurs(Cursuri c){
-        cursuri.remove(c);
-        nrCredite-=c.getNrCredite();
-        c.setNrStudenti(c.getNrStudenti() - 1);
+
+    public void delCurs(Course c){
+        enrolledCourses.remove(c);
+        totalCredit-=c.getCredits();
     }
 
-    public String getName() {
-        return name;
+    public long getStudentId() {
+        return studentId;
     }
 
-    public void setName(String name) {
-        name = name;
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
     }
 
-    public String getVorname() {
-        return vorName;
+    public int getTotalCredit() {
+        return totalCredit;
     }
 
-    public void setVorname(String vorname) {
-        this.vorName = vorname;
+    public void setTotalCredit(int totalCredit) {
+        this.totalCredit = totalCredit;
     }
 
-    public int getNrMatricol() {
-        return nrMatricol;
+    public List<Course> getEnrolledCourses() {
+        return enrolledCourses;
     }
 
-    public void setNrMatricol(int nrMatricol) {
-        this.nrMatricol = nrMatricol;
-    }
-
-    public int getNrCredite() {
-        return nrCredite;
-    }
-
-    public void setNrCredite(int nrCredite) {
-        this.nrCredite = nrCredite;
-    }
-
-    public List<Cursuri> getCursuri() {
-        return cursuri;
-    }
-
-    public void setCursuri(List<Cursuri> cursuri) {
-        this.cursuri = cursuri;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return nrMatricol == student.nrMatricol && nrCredite == student.nrCredite && Objects.equals(name, student.name) && Objects.equals(vorName, student.vorName) && Objects.equals(cursuri, student.cursuri);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, vorName, nrMatricol, nrCredite, cursuri);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "Name='" + name + '\'' +
-                ", vorname='" + vorName + '\'' +
-                ", nrMatricol=" + nrMatricol +
-                ", nrCredite=" + nrCredite +
-                ", cursuri=" + cursuri +
-                '}';
+    public void setEnrolledCourses(List<Course> enrolledCourses) {
+        this.enrolledCourses = enrolledCourses;
     }
 }

@@ -3,13 +3,13 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursuriInMemoryRepo implements CrudRepository<Cursuri>{
-    private List<Cursuri> curs = new ArrayList<Cursuri>();
+public class CursuriInMemoryRepo implements CrudRepository<Course>{
+    private List<Course> courses = new ArrayList<Course>();
 
     @Override
-    public Cursuri findOne(Long id) throws Exception {
+    public Course findOne(Long id) throws Exception {
 
-        if (curs.isEmpty())
+       /* if (curs.isEmpty())
         {
             throw new Exception("student is empty");
         }
@@ -19,49 +19,49 @@ public class CursuriInMemoryRepo implements CrudRepository<Cursuri>{
         }
         else
         {
-            for (Cursuri c : curs) {
+            for (Course c : curs) {
                 if (id == c.getIdCurs()) {
                     return c;
                 }
             }
-        }
+        }*/
         return null;
     }
 
     @Override
-    public Iterable<Cursuri> findAll() {
+    public Iterable<Course> findAll() {
 
         return null;
     }
 
     @Override
-    public Cursuri save(Cursuri entity) {
-        for(Cursuri c:curs)
+    public Course save(Course entity) {
+        for(Course c:courses)
         {
             if(c.equals(entity))
             {
                 return c;
             }
         }
-        curs.add(entity);
+        courses.add(entity);
         return null;
 
     }
 
     @Override
-    public Cursuri delete(Cursuri entity) throws Exception {
+    public Course delete(Course entity) throws Exception {
 
-        if(curs.isEmpty())
+        if(courses.isEmpty())
         {
             throw new Exception("student is empty");
         }
         else
         {
-            for (Cursuri c : curs) {
+            for (Course c : courses) {
 
                 if (c.equals(entity)) {
-                    Cursuri copy = entity;
-                    curs.remove(entity);
+                    Course copy = entity;
+                    courses.remove(entity);
                     return copy;
                 }
             }
@@ -70,7 +70,7 @@ public class CursuriInMemoryRepo implements CrudRepository<Cursuri>{
     }
 
     @Override
-    public Cursuri update(Cursuri entity) {
+    public Course update(Course entity) {
         return null;
     }
 
