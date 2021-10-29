@@ -1,4 +1,6 @@
-package com.company;
+package com.company.repository;
+
+import com.company.domain.Teacher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +14,18 @@ public class TeacherInMemoryRepo implements CrudRepository<Teacher>{
     /**
      * @param id -the id of the entity to be returned id must not be null
      * @return the entity with the specified id or null if there is no entity with the given id
-     * @throws Exception if the id is null or teacher list is empty
+     * @throws RuntimeException if the id is null or teacher list is empty
      */
     @Override
-    public Teacher findOne(Long id) throws Exception {
+    public Teacher findOne(Long id) {
 
         if (teacher.isEmpty())
         {
-            throw new Exception("Teacher list is empty");
+            throw new RuntimeException("Teacher list is empty");
         }
         if(id==null)
         {
-            throw new Exception("Id can't be null");
+            throw new RuntimeException("Id can't be null");
         }
         else
         {
@@ -66,14 +68,14 @@ public class TeacherInMemoryRepo implements CrudRepository<Teacher>{
     /**
      * @param entity entity must be not null
      * @return the removed entity or null if there is no entity with the given id
-     * @throws Exception if teacher list is empty
+     * @throws RuntimeException if teacher list is empty
      */
     @Override
-    public Teacher delete(Teacher entity) throws Exception {
+    public Teacher delete(Teacher entity) {
 
         if(teacher.isEmpty())
         {
-            throw new Exception("Teacher list is empty");
+            throw new RuntimeException("Teacher list is empty");
         }
         else
         {

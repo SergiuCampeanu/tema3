@@ -1,20 +1,23 @@
-package com.company;
+package com.company.repository;
+import com.company.domain.Course;
+import com.company.domain.Teacher;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author sncam
  */
-public class CursuriInMemoryRepo implements CrudRepository<Course>{
+public class CourseInMemoryRepo implements CrudRepository<Course>{
     private List<Course> courses = new ArrayList<Course>();
 
     /**
      * @param id -the id of the entity to be returned id must not be null
      * @return the entity with the specified id or null if there is no entity with the given id
-     * @throws Exception if the id is null or student list is empty
+     * @throws RuntimeException if the id is null or student list is empty
      */
     @Override
-    public Course findOne(Long id) throws Exception {
+    public Course findOne(Long id) {
 
         if (courses.isEmpty())
         {
@@ -22,7 +25,7 @@ public class CursuriInMemoryRepo implements CrudRepository<Course>{
         }
         if(id==null)
         {
-            throw new Exception("Id can't be null");
+            throw new RuntimeException("Id can't be null");
         }
         else
         {
@@ -65,25 +68,20 @@ public class CursuriInMemoryRepo implements CrudRepository<Course>{
     /**
      * @param entity entity must be not null
      * @return the removed entity or null if there is no entity with the given id
-     * @throws Exception if course list is empty
+     * @throws RuntimeException if course list is empty
      */
     @Override
-    public Course delete(Course entity) throws Exception {
+    public Course delete(Course entity) {
 
         if(courses.isEmpty())
         {
-            throw new Exception("Course list is empty");
+            throw new RuntimeException("Course list is empty");
         }
         else
         {
-            for (Course c : courses) {
-
-                if (c.equals(entity)) {
-                    Course copy = entity;
-                    courses.remove(entity);
-                    return copy;
-                }
-            }
+            boolean removed = courses.remove(entity);
+            if(removed)
+            return entity;
         }
         return null;
     }
@@ -100,7 +98,6 @@ public class CursuriInMemoryRepo implements CrudRepository<Course>{
                 course.setName(entity.getName());
                 course.setTeacher(entity.getTeacher());
                 course.setMaxEnrolled(entity.getMaxEnrolled());
-                course.setStudentsEnrolled(entity.getStudentsEnrolled());
                 course.setCredits(entity.getCredits());
                 return null;
             }

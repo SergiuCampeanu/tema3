@@ -1,4 +1,8 @@
-package com.company;
+package com.company.repository;
+
+import com.company.controller.CourseController;
+import com.company.domain.Course;
+import com.company.domain.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,13 +68,13 @@ public class StudentInMemoryRepo implements CrudRepository<Student>{
     /**
      * @param entity entity must be not null
      * @return the removed entity or null if there is no entity with the given id
-     * @throws Exception if student list is empty
+     * @throws RuntimeException if student list is empty
      */
     @Override
-    public Student delete(Student entity) throws Exception {
+    public Student delete(Student entity) {
         if(student.isEmpty())
         {
-            throw new Exception("Student list is empty");
+            throw new RuntimeException("Student list is empty");
         }
         else
         {
