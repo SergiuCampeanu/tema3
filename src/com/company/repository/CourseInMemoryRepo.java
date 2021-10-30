@@ -1,5 +1,6 @@
 package com.company.repository;
 import com.company.domain.Course;
+import com.company.domain.Student;
 import com.company.domain.Teacher;
 
 import java.util.ArrayList;
@@ -104,5 +105,17 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
         }
         return entity;
     }
+
+    public Course addStudentToCourse (long courseId, Student student){
+        for (Course course: courses){
+            if(courseId == course.getCourseId())
+            {
+                course.getStudentsEnrolled().add(student);
+                return course;
+            }
+        }
+        return null;
+    }
+
 
 }

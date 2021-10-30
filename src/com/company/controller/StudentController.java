@@ -5,21 +5,22 @@ import com.company.domain.Student;
 import com.company.repository.StudentInMemoryRepo;
 
 public class StudentController {
-    private StudentInMemoryRepo studentRepo;
+    private StudentInMemoryRepo repository;
 
     public StudentController(StudentInMemoryRepo studentRepo){
-        this.studentRepo = studentRepo;
+        this.repository = studentRepo;
     }
 
     public Student findStudentById(Long studentId){
-        return this.studentRepo.findOne(studentId);
+        return this.repository.findOne(studentId);
     }
 
     public Boolean addCourseToStudent(Long studentId, Course course) {
-        Student updatedStudent = this.studentRepo.addCourseToStudent(studentId,course);
+        Student updatedStudent = this.repository.addCourseToStudent(studentId,course);
         return updatedStudent!=null;
     }
 
-    public boolean updateStudent(Student newStudent) {
+    public Student updateStudent(Student student) {
+        return this.repository.update(student);
     }
 }

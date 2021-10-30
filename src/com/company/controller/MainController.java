@@ -64,14 +64,13 @@ public class MainController {
         List<Course> newCourseList = existingTeacher.getCourses();
         newCourseList.removeIf(course1->course1.getCourseId()==courseId);
 
-        Teacher newTeacher= new Teacher(existingTeacher.getName(), );
+        Teacher newTeacher= new Teacher(existingTeacher.getName(), existingTeacher.getFirstName(), existingTeacher.getTeacherId(), newCourseList);
         Course course = this.courseController.getCourseById(courseId);
         for(Student student: course.getStudentsEnrolled()){
             Student newStudent = new Student(student.getName(),student.getFirstName(),student.getStudentId(),student.getTotalCredit(),student.getEnrolledCourses());
             newStudent.getEnrolledCourses().removeIf(course1 -> course1.getCourseId()==courseId);
             this.studentController.updateStudent(newStudent);
         }
-
 
         return this.teacherController.updateTeacher(newTeacher)!= null;
     }

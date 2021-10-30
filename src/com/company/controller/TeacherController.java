@@ -4,17 +4,17 @@ import com.company.domain.Teacher;
 import com.company.repository.TeacherInMemoryRepo;
 
 public class TeacherController {
-    private TeacherInMemoryRepo teacherRepo;
+    private TeacherInMemoryRepo repository;
 
     public TeacherController(TeacherInMemoryRepo teacherRepo) {
-        this.teacherRepo = teacherRepo;
+        this.repository = teacherRepo;
     }
 
     public Teacher findById(long teacherId){
-        return this.teacherRepo.findOne(teacherId);
+        return this.repository.findOne(teacherId);
     }
 
-    public Teacher updateTeacher(Teacher newTeacher) {
-        return this.teacherRepo.update(newTeacher);
+    public Teacher updateTeacher(Teacher teacher) {
+        return this.repository.update(teacher);
     }
 }

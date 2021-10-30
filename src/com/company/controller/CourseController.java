@@ -16,10 +16,12 @@ public class CourseController {
 
 
     public Course findCourseById(Long courseId) {
-
+        return this.repository.findOne(courseId);
     }
 
     public Boolean addStudentToCourse(Long courseId, Student student) {
+        Course updatedCourse = this.repository.addStudentToCourse(courseId,student);
+        return updatedCourse!=null;
     }
 
     public Iterable<Course> getAllCourses() {
