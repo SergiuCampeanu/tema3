@@ -80,9 +80,14 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
         }
         else
         {
-            boolean removed = courses.remove(entity);
-            if(removed)
-            return entity;
+            for (Course c : courses)
+            {
+                if (c.equals(entity))
+                {
+                    courses.remove(entity);
+                    return entity;
+                }
+            }
         }
         return null;
     }
@@ -105,6 +110,13 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
         }
         return entity;
     }
+
+    /**
+     *
+     * @param courseId id of the course
+     * @param student object student
+     * @return the course with the student added or null if the id of the course was not find
+     */
 
     public Course addStudentToCourse (long courseId, Student student){
         for (Course course: courses){
