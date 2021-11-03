@@ -11,7 +11,11 @@ import java.util.List;
  * @author sncam
  */
 public class StudentInMemoryRepo implements CrudRepository<Student>{
-    private List<Student> student = new ArrayList<Student>();
+    private List<Student> student;
+
+    public StudentInMemoryRepo(List<Student> student) {
+        this.student = student;
+    }
 
     /**
      * @param id -the id of the entity to be returned id must not be null

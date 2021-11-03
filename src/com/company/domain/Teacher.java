@@ -57,25 +57,25 @@ public class Teacher extends Person {
         this.courses = courses;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Teacher teacher = (Teacher) o;
-        return Objects.equals(courses, teacher.courses);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Teacher teacher = (Teacher) o;
+//        return Objects.equals(courses, teacher.courses);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(courses);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(courses);
-    }
-
-    @Override
+/*    @Override
     public String toString() {
         return "Teacher{" +
                 "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", courses=" + courses +
                 '}';
-    }
+    }*/
 }

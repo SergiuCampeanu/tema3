@@ -86,27 +86,27 @@ public class Student extends Person {
         this.enrolledCourses = enrolledCourses;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return studentId == student.studentId && totalCredit == student.totalCredit && Objects.equals(enrolledCourses, student.enrolledCourses);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Student student = (Student) o;
+//        return studentId == student.studentId && totalCredit == student.totalCredit && Objects.equals(enrolledCourses, student.enrolledCourses);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(studentId, totalCredit, enrolledCourses);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(studentId, totalCredit, enrolledCourses);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", studentId=" + studentId +
-                ", totalCredit=" + totalCredit +
-                ", enrolledCourses=" + enrolledCourses +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "name='" + name + '\'' +
+//                ", firstName='" + firstName + '\'' +
+//                ", studentId=" + studentId +
+//                ", totalCredit=" + totalCredit +
+//                ", enrolledCourses=" + enrolledCourses +
+//                '}';
+//    }
 }

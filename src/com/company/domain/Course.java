@@ -131,27 +131,27 @@ getter and setter
         this.credits = credits;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return maxEnrolled == course.maxEnrolled && credits == course.credits && Objects.equals(name, course.name) && Objects.equals(teacher, course.teacher) && Objects.equals(studentsEnrolled, course.studentsEnrolled);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Course course = (Course) o;
+//        return maxEnrolled == course.maxEnrolled && credits == course.credits && Objects.equals(name, course.name) && Objects.equals(teacher, course.teacher) && Objects.equals(studentsEnrolled, course.studentsEnrolled);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name, teacher, maxEnrolled, studentsEnrolled, credits);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, teacher, maxEnrolled, studentsEnrolled, credits);
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "name='" + name + '\'' +
-                ", teacher=" + teacher +
-                ", maxEnrolled=" + maxEnrolled +
-                ", studentsEnrolled=" + studentsEnrolled +
-                ", credits=" + credits +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Course{" +
+//                "name='" + name + '\'' +
+//                ", teacher=" + teacher +
+//                ", maxEnrolled=" + maxEnrolled +
+//                ", studentsEnrolled=" + studentsEnrolled +
+//                ", credits=" + credits +
+//                '}';
+//    }
 }

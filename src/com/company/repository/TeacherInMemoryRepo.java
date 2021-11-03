@@ -9,7 +9,11 @@ import java.util.List;
  * @author sncam
  */
 public class TeacherInMemoryRepo implements CrudRepository<Teacher>{
-    private List<Teacher> teacher = new ArrayList<Teacher>();
+    private List<Teacher> teacher;
+
+    public TeacherInMemoryRepo(List<Teacher> teacher) {
+        this.teacher = teacher;
+    }
 
     /**
      * @param id -the id of the entity to be returned id must not be null

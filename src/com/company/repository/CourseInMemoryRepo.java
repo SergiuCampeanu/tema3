@@ -10,7 +10,11 @@ import java.util.List;
  * @author sncam
  */
 public class CourseInMemoryRepo implements CrudRepository<Course>{
-    private List<Course> courses = new ArrayList<Course>();
+    private List<Course> courses;
+
+    public CourseInMemoryRepo(List<Course> courses) {
+        this.courses = courses;
+    }
 
     /**
      * @param id -the id of the entity to be returned id must not be null

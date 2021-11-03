@@ -21,7 +21,7 @@ public class RegistrationSystem {
 
     private void showMenu(){
         StringBuilder builder = new StringBuilder();
-        builder.append("Welcome to the University's Application")
+        builder.append("Welcome to the University's Application\n")
                 .append("Press: 1 for add student to course\n")
                 .append("Press: 2 for get all courses\n")
                 .append("Press: 3 for get all student of a course\n")
@@ -36,6 +36,7 @@ public class RegistrationSystem {
         Scanner scanner = new Scanner(System.in);
         while (true){
             String opt = scanner.nextLine();
+
             switch (opt) {
 
                 case "1":
@@ -63,7 +64,7 @@ public class RegistrationSystem {
 
                 case "3":
                     System.out.println("Please insert course id");
-                    courseId = scanner.nextLine();
+                    String courseId = scanner.nextLine();
 
                     try {
                         Iterable<Student> studentListInACourse = this.mainController.getAllStudentsByCourseId(Long.getLong(courseId));
