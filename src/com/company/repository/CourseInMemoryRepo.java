@@ -26,7 +26,7 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
 
         if (courses.isEmpty())
         {
-            throw new Exception("Course list is empty");
+            throw new RuntimeException("Course list is empty");
         }
         if(id==null)
         {
@@ -48,7 +48,6 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
      */
     @Override
     public Iterable<Course> findAll() {
-
         return courses;
     }
 

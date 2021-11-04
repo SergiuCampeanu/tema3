@@ -20,17 +20,17 @@ public class StudentInMemoryRepo implements CrudRepository<Student>{
     /**
      * @param id -the id of the entity to be returned id must not be null
      * @return the entity with the specified id or null if there is no entity with the given id
-     * @throws Exception if the id is null or student list is empty
+     * @throws RuntimeException if the id is null or student list is empty
      */
     @Override
-    public Student findOne(Long id) throws Exception {
+    public Student findOne(Long id){
         if (student.isEmpty())
         {
-            throw new Exception("Student list is empty");
+            throw new RuntimeException("Student list is empty");
         }
         if(id==null)
         {
-            throw new Exception("Id can't be null");
+            throw new RuntimeException("Id can't be null");
         }
         else
         {
