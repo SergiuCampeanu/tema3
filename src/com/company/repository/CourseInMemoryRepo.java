@@ -119,7 +119,7 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
      *
      * @param courseId id of the course
      * @param student object student
-     * @return the course with the student added or null if the id of the course was not find
+     * @return the course with the student added or null if the id of the course was not found
      */
 
     public Course addStudentToCourse (long courseId, Student student){
@@ -133,5 +133,17 @@ public class CourseInMemoryRepo implements CrudRepository<Course>{
         return null;
     }
 
+    /**
+     * set a new empty arraylist to the course
+     * @param courseId id of the course
+     */
 
+    public void emptyCourseStudentList(Long courseId){
+        for (Course course: courses){
+            if(courseId == course.getCourseId())
+            {
+                course.setStudentsEnrolled(new ArrayList<>());
+            }
+        }
+    }
 }

@@ -18,27 +18,6 @@ public class Student extends Person {
         this.enrolledCourses = enrolledCourses;
     }
 
-    public void addCurs(Course c) throws Exception {
-        if(totalCredit+c.getCredits()>30)
-        {
-            throw new Exception("Prea multe credite");
-        }
-        if(c.getStudentsEnrolled().size()+1 > c.getMaxEnrolled())
-        {
-            throw new Exception("Nu mai sunt locuri disponibile la acest curs");
-        }
-        else
-        {
-            enrolledCourses.add(c);
-            totalCredit += c.getCredits();
-        }
-    }
-
-    public void delCurs(Course c){
-        enrolledCourses.remove(c);
-        totalCredit-=c.getCredits();
-    }
-
     /*
     getter and setter
     */
@@ -86,27 +65,17 @@ public class Student extends Person {
         this.enrolledCourses = enrolledCourses;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Student student = (Student) o;
-//        return studentId == student.studentId && totalCredit == student.totalCredit && Objects.equals(enrolledCourses, student.enrolledCourses);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(studentId, totalCredit, enrolledCourses);
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Student{" +
-//                "name='" + name + '\'' +
-//                ", firstName='" + firstName + '\'' +
-//                ", studentId=" + studentId +
-//                ", totalCredit=" + totalCredit +
-//                ", enrolledCourses=" + enrolledCourses +
-//                '}';
-//    }
+    /**
+     *
+     * @return tostring
+     */
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", studentId=" + studentId +
+                ", totalCredit=" + totalCredit +
+                '}';
+    }
 }

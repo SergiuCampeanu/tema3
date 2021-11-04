@@ -7,6 +7,7 @@ import com.company.controller.TeacherController;
 import com.company.domain.Course;
 import com.company.domain.Student;
 import com.company.domain.Teacher;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,74 +15,74 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CourseInMemoryRepoTest {
+class StudentInMemoryRepoTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void findOne() {
+        Student s1 = new Student("S1", "SF1", 1, 0, null);
+        Student s2 = new Student("S2", "SF2", 2, 0, null);
+        Student s3 = new Student("S3", "SF3", 3, 0, null);
+        StudentInMemoryRepo studentInMemoryRepo = new StudentInMemoryRepo(Arrays.asList(s1,s2,s3));
 
-        Course c1 = new Course("C1", null, 100, 1, null, 6);
-        Course c2 = new Course("C2", null, 2, 2, null, 25);
-        Course c3 = new Course("C3", null, 50, 3, null, 4);
-        CourseInMemoryRepo courseInMemoryRepo = new CourseInMemoryRepo(Arrays.asList(c1,c2,c3));
-
-        Course course = courseInMemoryRepo.findOne(Long.parseLong("1"));
-        assert course != null;
-
+        Student student = studentInMemoryRepo.findOne(Long.parseLong("1"));
+        assert student != null;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void findAll() {
+        Student s1 = new Student("S1", "SF1", 1, 0, null);
+        Student s2 = new Student("S2", "SF2", 2, 0, null);
+        Student s3 = new Student("S3", "SF3", 3, 0, null);
+        StudentInMemoryRepo studentInMemoryRepo = new StudentInMemoryRepo(Arrays.asList(s1,s2,s3));
 
-        Course c1 = new Course("C1", null, 100, 1, null, 6);
-        Course c2 = new Course("C2", null, 2, 2, null, 25);
-        Course c3 = new Course("C3", null, 50, 3, null, 4);
-        CourseInMemoryRepo courseInMemoryRepo = new CourseInMemoryRepo(Arrays.asList(c1,c2,c3));
-
-        List<Course> courseList = (List<Course>) courseInMemoryRepo.findAll();
-        assertEquals(3, courseList.size());
+        List<Student> studentList = (List<Student>) studentInMemoryRepo.findAll();
+        assertEquals(3, studentList.size());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void save() {
-        CourseInMemoryRepo courseInMemoryRepo = new CourseInMemoryRepo(new ArrayList<>());
+        StudentInMemoryRepo studentInMemoryRepo = new StudentInMemoryRepo(new ArrayList<>());
 
-        Course c4 = new Course("C4", null, 60, 4, null, 12);
-        courseInMemoryRepo.save(c4);
+        Student s4 = new Student("S4", "SF4", 4, 0, null);
+        studentInMemoryRepo.save(s4);
 
-        List<Course> courseList = (List<Course>) courseInMemoryRepo.findAll();
-        assertEquals(1, courseList.size());
+        List<Student> studentList = (List<Student>) studentInMemoryRepo.findAll();
+        assertEquals(1, studentList.size());
+
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void delete() {
-        Course c1 = new Course("C1", null, 100, 1, null, 6);
-        Course c2 = new Course("C2", null, 2, 2, null, 25);
-        Course c3 = new Course("C3", null, 50, 3, null, 4);
-        CourseInMemoryRepo courseInMemoryRepo = new CourseInMemoryRepo(new ArrayList<>());
-        courseInMemoryRepo.save(c1);
-        courseInMemoryRepo.save(c2);
-        courseInMemoryRepo.save(c3);
+        Student s1 = new Student("S1", "SF1", 1, 0, null);
+        Student s2 = new Student("S2", "SF2", 2, 0, null);
+        Student s3 = new Student("S3", "SF3", 3, 0, null);
+        StudentInMemoryRepo studentInMemoryRepo = new StudentInMemoryRepo(new ArrayList<>());
 
-        List<Course> courseList = (List<Course>) courseInMemoryRepo.findAll();
-        assertEquals(3, courseList.size());
+        studentInMemoryRepo.save(s1);
+        studentInMemoryRepo.save(s2);
+        studentInMemoryRepo.save(s3);
 
-        courseInMemoryRepo.delete(c2);
-        assertEquals(2, courseList.size());
+        List<Student> studentList = (List<Student>) studentInMemoryRepo.findAll();
+        assertEquals(3, studentList.size());
+
+        studentInMemoryRepo.delete(s2);
+        assertEquals(2, studentList.size());
+
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void update() {
-        Course c1 = new Course("C1", null, 100, 1, null, 6);
-        CourseInMemoryRepo courseInMemoryRepo = new CourseInMemoryRepo(Arrays.asList(c1));
-        Course c2 = new Course("C2", null, 2, 1, null, 25);
+        Student s1 = new Student("S1", "SF1", 1, 0, null);
+        StudentInMemoryRepo studentInMemoryRepo = new StudentInMemoryRepo(Arrays.asList(s1));
+        Student s2 = new Student("S2", "SF2", 1, 0, null);
 
-        courseInMemoryRepo.update(c2);
-        assertEquals("C2", courseInMemoryRepo.findOne(Long.parseLong("1")).getName() );
+        studentInMemoryRepo.update(s2);
+        assertEquals("S2", studentInMemoryRepo.findOne(Long.parseLong("1")).getName() );
+
     }
 
-    @org.junit.jupiter.api.Test
-    void addStudentToCourse() {
-
+    @Test
+    void addCourseToStudent() {
         List<Student> listStudentsCourse1 = new ArrayList<>();
         List<Student> listStudentsCourse2 = new ArrayList<>();
         List<Student> listStudentsCourse3 = new ArrayList<>();
@@ -165,7 +166,7 @@ class CourseInMemoryRepoTest {
         MainController mainController = new MainController(courseController, studentController, teacherController);
         mainController.registerStudentToCourse(Long.parseLong("3"), (Long.parseLong("1")));
 
-        List<Student> newStudentList = (List<Student>) mainController.getAllStudentsByCourseId(Long.parseLong("1"));
-        assertEquals(3,newStudentList.size());
+        List<Student> newCourseList = (List<Student>) mainController.getAllStudentsByCourseId(Long.parseLong("1"));
+        assertEquals(3,newCourseList.size());
     }
 }

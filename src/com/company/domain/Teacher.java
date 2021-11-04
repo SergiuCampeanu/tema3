@@ -17,14 +17,6 @@ public class Teacher extends Person {
         this.courses = courses;
     }
 
-    public void addCurs(Course c) {
-        courses.add(c);
-    }
-
-    public void delCurs(Course c) {
-        courses.remove(c);
-    }
-
     /*
     getter and setter
     */
@@ -57,25 +49,15 @@ public class Teacher extends Person {
         this.courses = courses;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Teacher teacher = (Teacher) o;
-//        return Objects.equals(courses, teacher.courses);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(courses);
-//    }
-
-/*    @Override
+    /**
+     *
+     * @return tostring
+     */
+    @Override
     public String toString() {
         return "Teacher{" +
                 "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", courses=" + courses +
                 '}';
-    }*/
+    }
 }

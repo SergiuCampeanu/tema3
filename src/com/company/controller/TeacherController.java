@@ -1,8 +1,10 @@
 package com.company.controller;
-
 import com.company.domain.Teacher;
 import com.company.repository.TeacherInMemoryRepo;
 
+/**
+ * @author sncam
+ */
 public class TeacherController {
     private TeacherInMemoryRepo repository;
 

@@ -23,26 +23,6 @@ public class Course {
         this.credits = credits;
     }
 
-    public void addStudent(Student s) throws Exception {
-        if(studentsEnrolled.size()==maxEnrolled)
-        {
-            throw new Exception("No more space in this course, please choose another one");
-        }
-        else {
-            studentsEnrolled.add(s);
-        }
-    }
-    public void delStudent(Student s) throws Exception {
-        if(studentsEnrolled.isEmpty())
-        {
-            throw new Exception("No one is participating to this course");
-        }
-        else {
-            studentsEnrolled.remove(s);
-        }
-
-    }
-
     /*
 getter and setter
 */
@@ -131,27 +111,19 @@ getter and setter
         this.credits = credits;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Course course = (Course) o;
-//        return maxEnrolled == course.maxEnrolled && credits == course.credits && Objects.equals(name, course.name) && Objects.equals(teacher, course.teacher) && Objects.equals(studentsEnrolled, course.studentsEnrolled);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name, teacher, maxEnrolled, studentsEnrolled, credits);
-//    }
 
-//    @Override
-//    public String toString() {
-//        return "Course{" +
-//                "name='" + name + '\'' +
-//                ", teacher=" + teacher +
-//                ", maxEnrolled=" + maxEnrolled +
-//                ", studentsEnrolled=" + studentsEnrolled +
-//                ", credits=" + credits +
-//                '}';
-//    }
+    /**
+     *
+     * @return tostring
+     */
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", teacher=" + teacher +
+                ", maxEnrolled=" + maxEnrolled +
+                ", studentsEnrolled=" + studentsEnrolled +
+                ", credits=" + credits +
+                '}';
+    }
 }

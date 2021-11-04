@@ -20,6 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         List<Student> listStudentsCourse1 = new ArrayList<>();
         List<Student> listStudentsCourse2 = new ArrayList<>();
         List<Student> listStudentsCourse3 = new ArrayList<>();
@@ -55,8 +56,16 @@ public class Main {
         listCoursesStudent3.add(c1);
 
         s1.setEnrolledCourses(listCoursesStudent1);
+        for(Course course: listCoursesStudent1)
+            s1.setTotalCredit(s1.getTotalCredit()+ course.getCredits());
+
         s2.setEnrolledCourses(listCoursesStudent2);
+        for(Course course: listCoursesStudent2)
+            s2.setTotalCredit(s2.getTotalCredit()+ course.getCredits());
+
         s3.setEnrolledCourses(listCoursesStudent3);
+        for(Course course: listCoursesStudent3)
+            s3.setTotalCredit(s3.getTotalCredit()+ course.getCredits());
 
         listCoursesTeacher1.add(c1);
         listCoursesTeacher2.add(c2);
@@ -83,9 +92,6 @@ public class Main {
         List<Course> courseList = new ArrayList<>(Arrays.asList(c1,c2,c3));
         List<Student> studentList = new ArrayList<>(Arrays.asList(s1,s2,s3));
         List<Teacher> teacherList = new ArrayList<>(Arrays.asList(t1,t2,t3));
-
-
-
 
         CourseInMemoryRepo courseRepo = new CourseInMemoryRepo(courseList);
         TeacherInMemoryRepo teacherRepo = new TeacherInMemoryRepo(teacherList);

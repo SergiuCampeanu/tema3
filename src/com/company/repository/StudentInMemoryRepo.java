@@ -111,4 +111,24 @@ public class StudentInMemoryRepo implements CrudRepository<Student>{
         }
         return entity;
     }
+
+    /**
+     *
+     * @param studentId id of the student
+     * @param course object course
+     * @return the student with the course added or null if the id of the student was not found
+     */
+
+    public Student addCourseToStudent (long studentId, Course course){
+        for (Student student: student){
+            if(studentId == student.getStudentId())
+            {
+                student.getEnrolledCourses().add(course);
+                student.setTotalCredit(student.getTotalCredit()+course.getCredits());
+                return student;
+            }
+        }
+        return null;
+    }
+
 }
